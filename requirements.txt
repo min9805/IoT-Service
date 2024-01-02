@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-dotenv
+influxdb-client
+sqlalchemy
+passlib
+python-jose
+pydantic[email]
+python-multipart
+bcrypt
