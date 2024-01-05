@@ -3,13 +3,12 @@ from datetime import timedelta, datetime
 from fastapi import APIRouter, HTTPException
 from fastapi import Depends
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
-
 from jose import jwt, JWTError
 from sqlalchemy.orm import Session
 from starlette import status
 from starlette.config import Config
 
-from app.db.database import get_db
+from app.config.database import get_db
 from app.domain.user import user_crud, user_schema
 from app.domain.user.user_crud import pwd_context
 
@@ -24,14 +23,13 @@ router = APIRouter(
 )
 
 
-@router.post("/create", status_code=status.HTTP_201_CREATED)
+@router.post("/create", status_code=status.HTTP_204_NO_CONTENT)
 def user_create(_user_create: user_schema.UserCreate, db: Session = Depends(get_db)):
     user = user_crud.get_existing_user(db, user_create=_user_create)
     if user:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT,
                             detail="이미 존재하는 사용자입니다.")
     user_crud.create_user(db=db, user_create=_user_create)
-    return {"status" : "success"}
 
 
 @router.post("/login", response_model=user_schema.Token)
