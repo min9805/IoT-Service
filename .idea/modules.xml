@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/yido.iml" filepath="$PROJECT_DIR$/.idea/yido.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/IoT-Service.iml" filepath="$PROJECT_DIR$/.idea/IoT-Service.iml" />
     </modules>
   </component>
 </project>

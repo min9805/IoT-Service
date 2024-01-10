@@ -12,8 +12,8 @@ class Question(BaseModel):
     content: str
     create_date: datetime.datetime
     answers: list[Answer] = []
-    user: User | None
-    modify_date: datetime.datetime | None = None
+    user: User
+    modify_date: datetime.datetime
     voter: list[User] = []
 
     class Config:

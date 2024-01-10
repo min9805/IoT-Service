@@ -61,10 +61,10 @@ def vote_question(db: Session, db_question: Question, db_user: User):
 
 # async examples
 # async def get_async_question_list(db: Session):
-#     data = await db.execute(select(Question)
+#     device = await db.execute(select(Question)
 #                             .order_by(Question.create_date.desc())
 #                             .limit(10))
-#     return data.all()
+#     return device.all()
 
 
 # async def async_create_question(db: Session, question_create: QuestionCreate):
