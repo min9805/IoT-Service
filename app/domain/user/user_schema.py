@@ -1,6 +1,5 @@
 from pydantic import BaseModel, validator, EmailStr
 
-from app.domain.device.device_schema import Device
 
 class UserCreate(BaseModel):
     username: str
@@ -31,7 +30,6 @@ class User(BaseModel):
     id: int
     username: str
     email: str
-    device: list[Device] = []
 
     class Config:
         orm_mode = True

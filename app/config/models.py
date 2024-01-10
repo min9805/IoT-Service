@@ -66,4 +66,6 @@ class Device(Base):
     id = Column(Integer, primary_key=True)
     uuid = Column(String, unique=True, nullable=False)
     regist_date = Column(DateTime, nullable=False)
-    device = relationship('User', secondary=user_device, backref='user_device')
+    device_name = Column(String)
+    user_id = Column(Integer, ForeignKey("user.id"), nullable=True)
+    user = relationship("User", backref="user_device")
