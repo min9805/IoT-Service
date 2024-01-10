@@ -35,6 +35,7 @@ app.include_router(device_router.router)
 app.mount("/assets", StaticFiles(directory="app/frontend/dist/assets"))
 
 create_tables()
-@app.get("/")
-def index():
-    return FileResponse("app/frontend/dist/index.html")
+
+#@app.get("/")
+#def index():
+#    return FileResponse("app/frontend/dist/index.html")

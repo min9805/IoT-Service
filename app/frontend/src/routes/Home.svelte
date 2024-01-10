@@ -3,9 +3,11 @@
     import { link } from 'svelte-spa-router'
     import { page, keyword, is_login } from "../lib/store"
     import moment from 'moment/min/moment-with-locales'
+    import { each } from "svelte/internal";
     moment.locale('ko')
 
     let question_list = []
+    let device_list = []
     let size = 10
     let total = 0
     let kw = ''
@@ -24,6 +26,21 @@
         })
     }
 
+    const get_device_list = async () => {
+    try {
+        const json = await new Promise((resolve, reject) => {
+            fastapi('get', '/api/device/list', null, resolve, reject);
+        });
+        device_list = json.device_list;
+        } catch (error) {
+            console.error("Error fetching device list:", error);
+        }
+    };
+
+    // 호출
+    get_device_list();
+
+
     $:$page, $keyword, get_question_list()
 </script>
 
@@ -33,6 +50,13 @@
             <a use:link href="/question-create" 
                 class="btn btn-primary {$is_login ? '' : 'disabled'}">질문 등록하기</a>
         </div>
+        {#each device_list as device, i}
+        <tr class="text-center">
+            <td class="text-start">
+                <a use:link href="/detail/device/{device.uuid}" class="btn btn-secondary" >{device.device_name}</a>
+            </td>
+        </tr>
+        {/each}
         <div class="col-6">
             <div class="input-group">
                 <input type="text" class="form-control" bind:value="{kw}">

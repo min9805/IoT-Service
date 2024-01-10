@@ -51,11 +51,10 @@ def device_detail(device_id: str, db: Session = Depends(get_db)):
     return tables
 
 @router.get("/list", response_model=device_schema.DeviceList)
-def question_list(db: Session = Depends(get_db),
-                  current_user: User = Depends(get_current_user),
-                  page: int = 0, size: int = 10, keyword: str = ''):
-    total, _device_list = device_crud.get_device_list(
-        db, skip=page * size, limit=size, keyword=keyword, db_user=current_user)
+def device_list(db: Session = Depends(get_db),
+                current_user: User = Depends(get_current_user),
+                page: int = 0, size: int = 10, keyword: str = ''):
+    total, _device_list = device_crud.get_device_list(db, db_user=current_user)
     return {
         'total': total,
         'device_list': _device_list

@@ -1,8 +1,8 @@
 <script>
-    import fastapi from "../lib/api"
-    import Error from "../components/Error.svelte"
+    import fastapi from "../../lib/api"
+    import Error from "../../components/Error.svelte"
     import { link, push } from 'svelte-spa-router'
-    import { is_login, username } from "../lib/store"
+    import { is_login, username } from "../../lib/store"
     import { marked } from 'marked'
     import moment from 'moment/min/moment-with-locales'
     moment.locale('ko')

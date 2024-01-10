@@ -1,13 +1,14 @@
 <script>
   import Router from 'svelte-spa-router'
   import Home from "./routes/Home.svelte"
-  import Detail from "./routes/Detail.svelte"
+  import Detail from "./routes/detail/Detail.svelte"
   import QuestionCreate from "./routes/QuestionCreate.svelte"
   import Navigation from "./components/Navigation.svelte"
   import UserCreate from "./routes/UserCreate.svelte"
   import UserLogin from "./routes/UserLogin.svelte"
   import QuestionModify from "./routes/QuestionModify.svelte"
   import AnswerModify from "./routes/AnswerModify.svelte"
+  import DeviceDetail from './routes/detail/device/[device_uuid].svelte'
 
   const routes = {
     '/': Home,
@@ -17,6 +18,7 @@
     '/user-login': UserLogin,
     '/question-modify/:question_id': QuestionModify,
     '/answer-modify/:answer_id': AnswerModify,
+    '/detail/device/:device_uuid':DeviceDetail
   }
 </script>
 

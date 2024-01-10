@@ -14,7 +14,6 @@ def registe_device(db: Session, device_regist: DeviceRegist, db_user: User):
     db.commit()
 
 
-def get_device_list(db: Session, db_user: User, skip: int = 0, limit: int = 10, keyword: str = ''):
+def get_device_list(db: Session, db_user: User):
     user_devices = db.query(Device).filter(Device.user_id == db_user.id).all()
-    print(db_user.id)
-    return 1, user_devices
+    return len(user_devices), user_devices
